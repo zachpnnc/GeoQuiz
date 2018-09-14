@@ -71,6 +71,9 @@ public class QuizActivity extends AppCompatActivity
         });
     }
 
+    //Adding comments to test Github integration in Android Studio.
+
+
     private void updateQuestion()
     {
         int question = mQuestionBank[mCurrentIndex].getTextResId();
