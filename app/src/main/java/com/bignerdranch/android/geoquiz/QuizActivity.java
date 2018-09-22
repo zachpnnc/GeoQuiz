@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -14,7 +15,8 @@ public class QuizActivity extends AppCompatActivity
     private static final String TAG = "QuizActivity";
     private Button mTrueButton;
     private Button mFalseButton;
-    private Button mNextButton;
+    private ImageButton mNextButton;
+    private ImageButton mBackButton;
     private TextView mQuestionTextView;
     private Question[] mQuestionBank = new Question[]{
             new Question(R.string.question_australia, true),
@@ -58,7 +60,7 @@ public class QuizActivity extends AppCompatActivity
             }
         });
 
-        mNextButton = (Button) findViewById(R.id.next_button);
+        mNextButton = (ImageButton) findViewById(R.id.next_button);
         mNextButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -68,6 +70,18 @@ public class QuizActivity extends AppCompatActivity
                 updateQuestion();
             }
         });
+
+        mBackButton = (ImageButton) findViewById(R.id.back_button);
+        mBackButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                mCurrentIndex = (mCurrentIndex - 1) % mQuestionBank.length;
+                updateQuestion();
+            }
+        });
+
     }
 
     @Override
